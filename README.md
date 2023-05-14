@@ -1,2 +1,2 @@
-# algorithm
+# Algorithm
 ## Preparing for Coding Interviews
