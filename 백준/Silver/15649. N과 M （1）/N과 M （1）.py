@@ -9,7 +9,7 @@ def backtrack(num): # num is the depth of graph
         print(' '.join(map(str, result))) #리스트에 있는 애들 출력
     for i in range(1,n+1):
         # 숫자 노드들 탐색 중
-        if not visited[i]:
+        if not visited[i]: # 중복 check
             visited[i]=True
             result.append(i)
             backtrack(num+1) # depth 1씩 추가
