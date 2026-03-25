@@ -1,25 +1,25 @@
 import sys
+input = sys.stdin.readline
+
+n, k = map(int, input().split())
 from collections import deque
-N, K = map(int, sys.stdin.readline().split())
+
 dist = [-1] * 100001
-def bfs(x, k):
-    if x == k:
-        print(0)
-        return
-    queue = deque()
-    dist[x] = 0
-    queue.append(x)
-    while queue:
-        x = queue.popleft()
-        for nx in [x-1, x+1, 2*x]:
-            if 0 <= nx < 100001:
-                if dist[nx] == -1:
-                    dist[nx] = dist[x] + 1
-                    queue.append(nx)
-                    if nx == K:
-                        print(dist[nx])
-                        return
-                
-            
-bfs(N, K)
+if n == k:
+    print(0)
+    exit()
     
+q = deque([n])
+dist[n] = 0
+# n에서 k까지의 최단 시간
+cnt = 0
+while q:
+    x = q.popleft()
+    for nx in [x + 1, x - 1, x * 2]:
+        if (nx >= 0 and nx < 100001) and dist[nx] == -1:
+            dist[nx] = dist[x] + 1
+            q.append(nx)
+            if nx == k:
+                print(dist[nx])
+                exit()
+        
